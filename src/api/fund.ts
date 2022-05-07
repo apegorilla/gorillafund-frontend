@@ -10,7 +10,8 @@ const FundAPI = {
     topRated: count => API.get('/fund/top_rated', { params: { count: count }}),
     search: condition => API.get('/fund/search', { params: condition }),
     photoUpload: formData => API.post('/fund/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
-    delete: uid => API.delete('/fund/' + uid)
+    delete: uid => API.delete('/fund/' + uid),
+    isNftVerify: () => API.get('/fund/isNftVerify')
 }
 
 export default FundAPI;

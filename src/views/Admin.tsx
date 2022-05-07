@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { URL, APP_NAME } from "libs/constants";
-import { AiOutlineFund } from "react-icons/ai";
+import { AiOutlineFund, AiOutlineSetting } from "react-icons/ai";
 import { BiDonateHeart } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
@@ -41,6 +41,7 @@ const AdminHeader = () => {
                         <NavLink to={URL.ADMIN_USERS} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><FiUsers size={25} /></NavLink>
                         <NavLink to={URL.ADMIN_FUNDS} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><AiOutlineFund size={25} /></NavLink>
                         <NavLink to={URL.ADMIN_DONATES} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><BiDonateHeart size={25} /></NavLink>
+                        <NavLink to={URL.ADMIN_SETTING} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><AiOutlineSetting size={25} /></NavLink>
                     </div>
                 }
             </div>

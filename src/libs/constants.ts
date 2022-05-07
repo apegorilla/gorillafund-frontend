@@ -22,7 +22,8 @@ export const URL = {
     ADMIN: '/admin',
     ADMIN_USERS: 'users',
     ADMIN_FUNDS: 'funds',
-    ADMIN_DONATES: 'donates'
+    ADMIN_DONATES: 'donates',
+    ADMIN_SETTING: 'setting'
 }
 
 export const SOCIAL = {

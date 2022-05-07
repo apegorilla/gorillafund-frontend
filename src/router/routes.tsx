@@ -22,6 +22,7 @@ import AdminAuth from "views/auth/Admin";
 import AdminUser from "components/admin/AdminUser";
 import AdminFund from "components/admin/AdminFund";
 import AdminDonate from "components/admin/AdminDonate";
+import AdminSetting from "components/admin/AdminSetting";
 
 const routes = [
     {
@@ -111,6 +112,10 @@ const routes = [
             {
                 url: URL.ADMIN_DONATES,
                 component: <AdminDonate />
+            },
+            {
+                url: URL.ADMIN_SETTING,
+                component: <AdminSetting />
             },
             {
                 url: "",
