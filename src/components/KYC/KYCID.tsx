@@ -72,14 +72,14 @@ const KYCID = () => {
                 <div className="pb-1 font-bold">Document upload*</div>
                 <div onClick={inputImg1} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                     <FiPaperclip size={20} className="rotate-45" />
-                    <div className="w-full px-3 py-2 text-gray-500">{doc1 ? doc1.name : "Attach or drag and drop file"}</div>
+                    <div className="w-full px-3 py-2 text-gray-500">{doc1 ? doc1.name : "Click here to attach file"}</div>
                 </div>
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Document upload*</div>
                 <div onClick={inputImg2} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                     <FiPaperclip size={20} className="rotate-45" />
-                    <div className="w-full px-3 py-2 text-gray-500">{doc2 ? doc2.name : "Attach or drag and drop file"}</div>
+                    <div className="w-full px-3 py-2 text-gray-500">{doc2 ? doc2.name : "Click here to attach file"}</div>
                 </div>
             </div>
             <button onClick={onNext} className="w-full py-2 mt-6 rounded-[4px] text-white bg-teal-700">Next</button>

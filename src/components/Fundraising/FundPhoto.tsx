@@ -63,7 +63,7 @@ const FundPhoto = () => {
                     <div className="pb-1 font-bold">Cover Image*</div>
                     <div onClick={handleClick} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                         <FiPaperclip size={20} className="rotate-45" />
-                        <div className="w-full px-3 py-2 text-gray-500">Attach or drag and drop file</div>
+                        <div className="w-full px-3 py-2 text-gray-500">Click here to attach file</div>
                     </div>
                 </div>
             }
