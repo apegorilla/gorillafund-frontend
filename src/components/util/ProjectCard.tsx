@@ -7,7 +7,7 @@ import { nFormatter, timeAgoFormat } from "libs/utils";
 const ProjectCard = ({data, className}: {data: any, className?: string}) => {
     return (
         <Link to={URL.FUND.replace(':uid', data.uid)} className={"flex flex-col text-sm text-gray-500 bg-white shadow-md transition-all duration-200 hover:shadow-xl hover:-translate-y-3 rounded-md " + className}>
-            <img src={data.image} className="object-cover h-44" alt="" />
+            <img src={data.image} className="object-cover h-44 rounded-t-md" alt="" />
             <div className="flex flex-col px-4 py-5">
                 <div className="text-lg font-bold text-black line-clamp-1">{data.headline}</div>
                 <div className="pt-2 text-justify line-clamp-4">{data.description}</div>
