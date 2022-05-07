@@ -38,5 +38,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           exclude: |
-            **/node_modules/**
-            **/**/**
+            **
+            !build
