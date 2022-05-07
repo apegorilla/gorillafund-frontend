@@ -36,7 +36,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: mkdir ~/.ssh
-      - run: 'echo "$SSH_KEY" >> ~/.ssh/root'
-      - run: chmod 400 ~/.ssh/root
-      - run: echo -e "Host gorillafund\n\tUser root\n\tHostname $HOST\n\tIdentityFile ~/.ssh/root\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+      - run: 'echo "$SSH_KEY" >> ~/.ssh/gorillafund'
+      - run: chmod 400 ~/.ssh/gorillafund
+      - run: echo -e "Host gorillafund\n\tUser gorillafund\n\tHostname $HOST\n\tIdentityFile ~/.ssh/gorillafund\n\tStrictHostKeyChecking No" >> ~/.ssh/config
       - run: rsync -e ssh public gorillafund:/home/gorillafund/public_html/gorillafund.io/public
