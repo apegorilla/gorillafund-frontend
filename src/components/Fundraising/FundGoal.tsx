@@ -3,6 +3,7 @@ import Select from "react-select";
 import toast from "react-hot-toast";
 import CurrencyInput from "react-currency-input-field";
 import { useFund } from "contexts/FundContext";
+import FundAPI from "api/fund";
 import { contract } from "libs/web3";
 import { FUNDCATEGORY } from "libs/constants";
 import logo from "assets/img/svg/gorilla.svg";
@@ -12,6 +13,7 @@ import WalletAddressInput from "components/util/WalletAddressInput";
 const FundGoal = () => {
     const { setStep, name, setName, category, setCategory, amount, setAmount, address, setAddress } = useFund();
     const [ verify, setVerify ] = useState<boolean>(false);
+    const [ isNftVerify, setNftVerify ] = useState<boolean>(true);
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
@@ -21,7 +23,7 @@ const FundGoal = () => {
         if(!amount) return toast.error('Please input amount of fundraising.');
         if(!category) return toast.error('Please select category.');
         if(!address) return toast.error('Please input your wallet address.');
-        if(!verify) return toast.custom(() => (
+        if(!verify && isNftVerify) return toast.custom(() => (
             <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
                 <img src={logo} alt="" />
                 <div>
@@ -34,7 +36,7 @@ const FundGoal = () => {
     }
 
     useEffect(() => {
-        if(!address) return;
+        if(!address || !isNftVerify) return;
         contract.methods.balanceOf(address).call()
         .then(balance => {
             if(parseInt(balance) > 0) {
@@ -53,6 +55,11 @@ const FundGoal = () => {
         })
         .catch(err => toast.error(err.message));
     }, [address]);
+    useEffect(() => {
+        FundAPI.isNftVerify()
+        .then(res => setNftVerify(res.data.nftVerify))
+        .catch(err => toast.error(err.message));
+    }, []);
 
     return (
         <>
