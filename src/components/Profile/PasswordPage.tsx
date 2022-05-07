@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Auth from "api/auth";
 import { MdLockOutline } from "react-icons/md";
 import toast from "react-hot-toast";
@@ -12,7 +12,7 @@ const PasswordPage = ({submit, setSubmit}) => {
     const handleNew = e => setNew(e.target.value);
     const handleRepeat = e => setRepeat(e.target.value);
 
-    const setPassword = () => {
+    const setPassword = useCallback(() => {
         setSubmit(false);
         if(newPass.length < 8) return toast.error('Password must be at least 8 characters.');
         if(newPass !== repeat) return toast.error('Please input password correctly.');
@@ -22,11 +22,11 @@ const PasswordPage = ({submit, setSubmit}) => {
             else return toast.error(res.data.message);
         })
         .catch(err => toast.error(err?.response.data.message || err.message));
-    }
+    }, [current, newPass, repeat, setSubmit]);
 
     useEffect(() => {
         if(submit) setPassword();
-    }, [submit]);
+    }, [submit, setPassword]);
 
     return (
         <div className="py-5 bg-slate-50">

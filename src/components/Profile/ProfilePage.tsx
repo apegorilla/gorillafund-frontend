@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import Modal from "components/util/Modal";
@@ -66,7 +66,7 @@ const ProfilePage = ({submit, setSubmit}) => {
         .catch(err => toast.error(err.message));
     }
 
-    const submitData = () => {
+    const submitData = useCallback(() => {
         setSubmit(false);
         const data = { firstName, lastName, username, email, phone, address, country, city, zipCode }
         if(image) {
@@ -100,11 +100,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                 toast.error(err.message);
             });
         }
-    }
+    }, [address, city, country, email, firstName, image, lastName, phone, reload, setSubmit, username, zipCode]);
 
     useEffect(() => {
         if(submit) submitData();
-    }, [submit]);
+    }, [submit, submitData]);
     useEffect(() => {
         if(!user.loggedIn) return;
         setUrl(user.avatar);

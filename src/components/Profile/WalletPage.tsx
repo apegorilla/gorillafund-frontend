@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import UserAPI from "api/user";
 import web3, { isWeb3Enable } from "libs/web3";
 import { useAuth } from "contexts/AuthContext";
@@ -14,7 +14,7 @@ const WalletPage = ({ submit, setSubmit }) => {
         .then(users => setWallet(users[0]))
         .catch(err => window.console.log(err.message));
     }
-    const changeWallet = () => {
+    const changeWallet = useCallback(() => {
         setSubmit(false);
         UserAPI.confirmWallet(wallet)
         .then(res => {
@@ -26,12 +26,12 @@ const WalletPage = ({ submit, setSubmit }) => {
             logOut();
         })
         .catch(err => toast.error(err.message));
-    }
+    }, [logOut, setSubmit, wallet]);
 
     useEffect(() => user.walletAddress && setWallet(user.walletAddress), [user]);
     useEffect(() => {
         if(submit) changeWallet();
-    }, [submit])
+    }, [submit, changeWallet])
 
     return (
         <div className="py-5 bg-slate-50">

@@ -1,21 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
-import Modal from "components/util/Modal";
-import how_it_works from "assets/video/how_it_works.mp4";
-import { FaRegPlayCircle } from "react-icons/fa";
+// import Modal from "components/util/Modal";
+// import how_it_works from "assets/video/how_it_works.mp4";
+// import { FaRegPlayCircle } from "react-icons/fa";
 
 const HomeTop = () => {
-    const video = useRef<HTMLVideoElement>(null);
-    const [ isOpen, setOpen ] = useState<boolean>(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    // const video = useRef<HTMLVideoElement>(null);
+    // const [ isOpen, setOpen ] = useState<boolean>(false);
+    // const handleOpen = () => setOpen(true);
+    // const handleClose = () => setOpen(false);
 
-    useEffect(() => {
-        if(video.current === null) return;
-        if(isOpen) video.current.play();
-        else video.current.pause();
-    }, [ isOpen ]);
+    // useEffect(() => {
+    //     if(video.current === null) return;
+    //     if(isOpen) video.current.play();
+    //     else video.current.pause();
+    // }, [ isOpen ]);
 
     return (
         <div className="flex flex-col md:flex-row bg-slate-50">
@@ -31,14 +31,14 @@ const HomeTop = () => {
                 </div>
             </div>
             <div className="bg-[url('../../assets/img/home/e-sport.png')] w-full mb-0 mt-4 md:mt-0 bg-cover bg-center md:w-[500px] h-[400px]"></div>
-            <Modal isOpen={isOpen} onClose={handleClose}>
+            {/* <Modal isOpen={isOpen} onClose={handleClose}>
                 <div className="px-3">
                     <video ref={video} width={600} controls>
                         <source src={how_it_works} type="video/mp4" />
                         Your brower does not support HTML video.
                     </video>
                 </div> 
-            </Modal>
+            </Modal> */}
         </div>
     )
 }

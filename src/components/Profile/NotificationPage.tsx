@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useAuth } from "contexts/AuthContext";
 import UserAPI from "api/user";
 import toast from "react-hot-toast";
@@ -7,7 +7,7 @@ const NotificationPage = ({ submit, setSubmit }) => {
     const { user, reload } = useAuth();
     const [ option, setOption ] = useState<string>(user.emailSetting + "");
     const handleChange = e => setOption(e.target.value);
-    const changeSetting = () => {
+    const changeSetting = useCallback(() => {
         setSubmit(false)
         UserAPI.changeEmailSetting(parseInt(option))
         .then(res => {
@@ -15,11 +15,11 @@ const NotificationPage = ({ submit, setSubmit }) => {
             reload();
         })
         .catch(err => toast.success(err.message));
-    }
+    }, [option, reload, setSubmit]);
 
     useEffect(() => {
         if(submit) changeSetting();
-    }, [submit])
+    }, [submit, changeSetting]);
 
     return (
         <div className="py-5 bg-slate-50">
