@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 import Modal from "components/util/Modal";
 import Auth from "api/auth";
 import UserAPI from "api/user";
@@ -68,6 +69,15 @@ const ProfilePage = ({submit, setSubmit}) => {
 
     const submitData = useCallback(() => {
         setSubmit(false);
+        if(!firstName.trim().length) return toast.error('First name is required.');
+        if(!lastName.trim().length) return toast.error('Last name is required.');
+        if(!username.trim().length) return toast.error('Username is required.');
+        if(!validator.isEmail(email)) return toast.error('Email format is incorrect.');
+        if(!phone.trim().length) return toast.error('Phone number is required.');
+        if(!address.trim().length) return toast.error('Residental address is required.');
+        if(!country) return toast.error('Country is required.');
+        if(!city.trim().length) return toast.error('City is required.');
+        if(!zipCode.trim().length) return toast.error('Zip code is required.');
         const data = { firstName, lastName, username, email, phone, address, country, city, zipCode }
         if(image) {
             const formData = new FormData();
@@ -218,8 +228,8 @@ const ProfilePage = ({submit, setSubmit}) => {
                     <p className="text-sm text-gray-500">You will no longer have access to this fundraiser after deleting.</p>
                     <p className="text-sm text-gray-500">If your received donations, your donors will still be able to view a summary.</p>
                     <hr className="my-4" />
-                    <input type="text" onChange={handleChangeKey} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" autoComplete="off" placeholder="delete" />
-                    <button type="submit" className="w-full py-2 mt-4 font-bold text-white transition-all duration-200 bg-teal-700 disabled:opacity-70" disabled={!isKeyValid}>Delete my account</button>
+                    <input type="text" onChange={handleChangeKey} className="w-full py-2 px-3 focus:outline-none border border-slate-200 rounded-[4px]" autoComplete="off" placeholder="delete" />
+                    <button type="submit" className="w-full py-2 mt-4 font-bold text-white transition-all duration-200 bg-teal-700 disabled:opacity-70 rounded-[4px]" disabled={!isKeyValid}>Delete my account</button>
                 </form>
             </Modal>
         </div>
