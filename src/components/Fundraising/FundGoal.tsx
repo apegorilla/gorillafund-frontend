@@ -54,7 +54,7 @@ const FundGoal = () => {
             ));
         })
         .catch(err => toast.error(err.message));
-    }, [address]);
+    }, [address, isNftVerify]);
     useEffect(() => {
         FundAPI.isNftVerify()
         .then(res => setNftVerify(res.data.nftVerify))
