@@ -2,6 +2,7 @@
   "name": "gorillafund-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:3000/",
   "dependencies": {
     "@ethersproject/abi": "^5.6.0",
     "@szhsin/react-menu": "^3.0.0",
