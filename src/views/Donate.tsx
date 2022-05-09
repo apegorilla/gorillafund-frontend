@@ -94,7 +94,7 @@ const Donate = () => {
                         user.loggedIn ? 
                         <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
                             <div>{user.username || addressFormat(user.walletAddress)}</div>
-                            <img src={user.avatar} className="rounded-full w-8 border bg-teal-300" alt="" />
+                            <img src={user.avatar} className="w-8 bg-teal-300 border rounded-full" alt="" />
                         </Link> :
                         <div className="flex gap-2 text-right">
                             <div className="hidden text-gray-500 sm:block">Already have an account? </div>
@@ -125,11 +125,11 @@ const Donate = () => {
                             <hr className="mt-3" />
                             <div className="pt-6 pb-2 font-bold">Enter your donation</div>
                             <div className="relative">
-                                <div className="border flex items-center justify-center px-2 mb-2">
+                                <div className="flex items-center justify-center px-2 mb-2 border">
                                     <FaEthereum size={24} className="text-gray-700" />
                                     <input type="number" min={0} value={amount} onChange={handleChange} step={0.1} className="w-full p-2 pr-0 font-semibold text-right focus:outline-none" />
                                 </div>
-                                <div className="border flex items-center justify-center px-2">
+                                <div className="flex items-center justify-center px-2 border">
                                     <AiFillDollarCircle size={24} className="text-teal-700" />
                                     <input value={USD} className="w-full p-2 pr-4 font-semibold text-right text-gray-500 focus:outline-none" readOnly />
                                 </div>
@@ -142,7 +142,7 @@ const Donate = () => {
                         </div>
                         <div className="w-full p-6 bg-white rounded-br-md">
                             <div className="flex justify-center">
-                                <div className="border rounded p-2 border-gray-500">
+                                <div className="p-2 border border-gray-500 rounded">
                                     <QRCode value={`ethereum:${data.walletAddress}`} level="M" size={130} />
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ const Donate = () => {
                         <div>Amount: {amount} ETH</div>
                         <div>$ {USD}</div>
                     </div>
-                    <textarea value={comment} onChange={handleCommentChange} className="w-full h-20 focus:outline-none border py-2 px-3 rounded-[4px]"></textarea>
+                    <textarea value={comment} onChange={handleCommentChange} className="w-full h-20 text-sm focus:outline-none border py-2 px-3 rounded-[4px]"></textarea>
                     <hr className="my-3" />
                     <button onClick={handleDonate} className="w-full py-2 font-bold text-white rounded-[4px] bg-teal-700">Confirm</button>
                 </div>
