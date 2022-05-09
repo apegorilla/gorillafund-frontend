@@ -28,8 +28,8 @@ const FundGoal = () => {
                 balance = await contract.methods.balanceOf(address).call();
             }
             catch(err) { toast.error((err as Error).message); }
-            if(balance === NaN) return ;
-            if(parseInt(balance) == 0) return toast.custom(() => (
+            if(isNaN(balance)) return ;
+            if(parseInt(balance) === 0) return toast.custom(() => (
                 <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
                     <img src={logo} alt="" />
                     <div>

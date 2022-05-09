@@ -39,7 +39,7 @@ const HomeProjects = () => {
         <div className="w-full overflow-hidden bg-slate-50">
             <div className="px-3 pt-24 max-w-[900px] mx-auto">
                 <div className="flex flex-wrap items-end justify-between gap-3">
-                    <div className="flex items-center text-2xl font-bold text-black">
+                    <div className="flex gap-3 text-2xl font-bold text-black">
                         <ImFire /> Ape Gorilla Project Proposals
                     </div>
                     <Link to={URL.SEARCH} className="flex items-center hover:font-bold">
