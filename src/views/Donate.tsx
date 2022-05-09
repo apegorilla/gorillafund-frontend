@@ -10,12 +10,13 @@ import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
 import { URL, APP_NAME } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
+import Modal from "components/util/Modal";
 import Progress from "components/util/Progress";
 import CopyInput from "components/util/CopyInput";
 import { FiArrowLeft } from "react-icons/fi";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
-import { FaEthereum, FaExchangeAlt } from "react-icons/fa";
+import { FaEthereum, FaExchangeAlt, FaTimes } from "react-icons/fa";
 import logo from "assets/img/svg/gorilla.svg";
 import toast from "react-hot-toast";
 
@@ -26,8 +27,13 @@ const Donate = () => {
     const [ error, setError ] = useState<boolean>(false);
     const [ amount, setAmount ] = useState<any>('0.1');
     const [ USD, setUSD ] = useState<any>('0');
+    const [ isOpen, setOpen ] = useState<boolean>(false);
+    const [ comment, setComment ] = useState<string>("");
     
     const handleChange = e => setAmount(e.target.value);
+    const handleOpen = e => setOpen(true);
+    const handleClose = e => setOpen(false);
+    const handleCommentChange = e => setComment(e.target.value);
     const handleDonate = async () => {
         if(!isWeb3Enable) return toast.error('Please install metamask.');
         if(amount === '0') return toast.error('Donation must be greater than 0');
@@ -51,9 +57,12 @@ const Donate = () => {
                 transactionId: transactionId,
                 toAddress: data.walletAddress,
                 ethAmount: parseFloat(amount),
-                usdAmount: parseFloat(USD)
+                usdAmount: parseFloat(USD),
+                comment: comment
             });
             toast.success('Thank you for fund!');
+            setComment("");
+            setOpen(false);
         }
         catch(err: any) { toast.error(err.message) }
     }
@@ -129,7 +138,7 @@ const Donate = () => {
                                 </div>
                             </div>
                             <div className="py-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
-                            <button onClick={handleDonate} className="w-full py-2 font-bold text-white rounded-[4px] bg-teal-700">Donate</button>
+                            <button onClick={handleOpen} className="w-full py-2 font-bold text-white rounded-[4px] bg-teal-700">Donate</button>
                         </div>
                         <div className="w-full p-6 bg-white rounded-br-md">
                             <div className="flex justify-center">
@@ -144,6 +153,22 @@ const Donate = () => {
                     </div>
                 </div>
             </div>
+            <Modal isOpen={isOpen} onClose={handleClose}>
+                <div className="w-full max-w-md p-6 bg-white">
+                    <div className="flex justify-between gap-10">
+                        <div className="text-base font-bold text-black">Please leave comment about your donate.</div>
+                        <button onClick={handleClose}><FaTimes size={16} /></button>
+                    </div>
+                    <hr className="my-3" />
+                    <div className="flex justify-between pb-1 text-sm text-black">
+                        <div>Amount: {amount} ETH</div>
+                        <div>$ {USD}</div>
+                    </div>
+                    <textarea value={comment} onChange={handleCommentChange} className="w-full h-20 focus:outline-none border-[1px] py-2 px-3 rounded-[4px]"></textarea>
+                    <hr className="my-3" />
+                    <button onClick={handleDonate} className="w-full py-2 font-bold text-white rounded-[4px] bg-teal-700">Confirm</button>
+                </div>
+            </Modal>
         </div>
     )
 }
