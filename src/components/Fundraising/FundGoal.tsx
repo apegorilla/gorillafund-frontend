@@ -12,38 +12,24 @@ import WalletAddressInput from "components/util/WalletAddressInput";
 
 const FundGoal = () => {
     const { setStep, name, setName, category, setCategory, amount, setAmount, address, setAddress } = useFund();
-    const [ verify, setVerify ] = useState<boolean>(false);
     const [ isNftVerify, setNftVerify ] = useState<boolean>(true);
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
     const handleChangeAddress = val => setAddress(val);
-    const handleNext = () => {
+    const handleNext = async () => {
         if(!name.trim().length) return toast.error('Please input name of fundraising.');
         if(!amount) return toast.error('Please input amount of fundraising.');
         if(!category) return toast.error('Please select category.');
         if(!address) return toast.error('Please input your wallet address.');
-        if(!verify && isNftVerify) return toast.custom(() => (
-            <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
-                <img src={logo} alt="" />
-                <div>
-                    <p>You don't have ApeGorilla NFT in your wallet.</p>
-                    <p>Please mint an ApeGorilla from ApeGorilla.com to create a funding proposal.</p>
-                </div>
-            </div>
-        ));
-        setStep(2);
-    }
-
-    useEffect(() => {
-        if(!address || !isNftVerify) return;
-        contract.methods.balanceOf(address).call()
-        .then(balance => {
-            if(parseInt(balance) > 0) {
-                toast.success('You have ' + parseInt(balance) + ' AGC tokens in your wallet.');
-                setVerify(true);
+        if(isNftVerify) {
+            let balance;
+            try{
+                balance = await contract.methods.balanceOf(address).call();
             }
-            else toast.custom(() => (
+            catch(err) { toast.error((err as Error).message); }
+            if(balance === NaN) return ;
+            if(parseInt(balance) == 0) return toast.custom(() => (
                 <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
                     <img src={logo} alt="" />
                     <div>
@@ -52,9 +38,10 @@ const FundGoal = () => {
                     </div>
                 </div>
             ));
-        })
-        .catch(err => toast.error(err.message));
-    }, [address, isNftVerify]);
+        }
+        setStep(2);
+    }
+
     useEffect(() => {
         FundAPI.isNftVerify()
         .then(res => setNftVerify(res.data.nftVerify))

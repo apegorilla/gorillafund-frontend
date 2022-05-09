@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { nFormatter } from "libs/utils";
 import { useFund } from "contexts/FundContext";
@@ -7,6 +7,7 @@ import { FiArrowLeft } from "react-icons/fi";
 const FundPreview = () => {
     var button;
     const { setStep, name, amount, image, head, desc, submit, setWel } = useFund();
+    const [url, setURL] = useState<string>('');
     const handleComplete = () => {
         button.disabled = true;
         submit().then(res => {
@@ -20,11 +21,15 @@ const FundPreview = () => {
     }
     const handlePrev = () => setStep(3);
 
+    useEffect(() => {
+        if(image) setURL(window.URL.createObjectURL(image));
+    }, [image]);
+
     return (
         <>
             <div className="pt-6 text-2xl font-bold">Preview of your fundraiser</div>
             <div className="pt-3 text-center text-gray-500">Explain who you are and why you're fundraising.</div>
-            <img src={image} className="pt-5 w-full h-[180px] object-cover rounded-[4px]" alt="" />
+            <img src={url} className="pt-5 w-full object-cover rounded-[4px]" alt="" />
             <div className="flex flex-col w-full px-3 py-5">
                 <div className="text-base font-bold">{name}</div>
                 <div className="pt-3 text-gray-500">{head}</div>

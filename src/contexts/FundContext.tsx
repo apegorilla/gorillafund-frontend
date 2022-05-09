@@ -9,18 +9,25 @@ const FundProvider = ({children}) => {
     const [amount, setAmount] = useState<string>("3");
     const [category, setCategory] = useState<any>(0);
     const [address, setAddress] = useState<string>("");
-    const [image, setImage] = useState<string>("");
+    const [image, setImage] = useState<any>();
     const [head, setHead] = useState<string>("");
     const [desc, setDesc] = useState<string>("");
     const [welcome, setWel] = useState<string>("");
 
-    const submit = () => FundAPI.create({
-        name, amount, image,
-        categoryId: category.value,
-        walletAddress: address,
-        headline: head,
-        description: desc
-    });
+    const submit = () => {
+        const formData = new FormData();
+        formData.append('photo', image);
+        return FundAPI.photoUpload(formData)
+        .then(res => FundAPI.create({
+                name, amount,
+                image: res.data.filePath,
+                categoryId: category.value,
+                walletAddress: address,
+                headline: head,
+                description: desc
+            })
+        );
+    }
 
     return (
         <FundContext.Provider value={{ 
