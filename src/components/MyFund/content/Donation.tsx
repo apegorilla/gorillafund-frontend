@@ -16,7 +16,7 @@ const Donation = ({ donates }) => {
                                     <div className="font-bold"><span className="text-black">{getUserName(donate.user)}</span> donated {donate.ethAmount} ETH</div>
                                     <div className="text-xs">{timeAgoFormat(donate.createdAt)}</div>
                                 </div>
-                                <div className="text-xs">Today's Fortune 500 list rolls over faster than ever. Today, only 12 percent of the companies that made the list in 1955 still remain. And 94 percent of the Fortune 500 list believes they'll change more in the next five years than in the past 50.</div>
+                                <div className="text-xs">{donate.comment || "No comments ..."}</div>
                             </div>
                         </div>
                     ) :
