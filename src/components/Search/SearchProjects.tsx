@@ -60,7 +60,7 @@ const SearchProjects = () => {
                 </div>
                 <hr />
                 <div className="flex flex-wrap items-center justify-between gap-5 py-10 text-sm">
-                    <div className="flex bg-white border-[1px] border-white rounded-sm hover:border-slate-200">
+                    <div className="flex bg-white border border-white rounded-sm hover:border-slate-200">
                         <div className="flex items-center justify-center px-4">
                             <ImSearch className="text-gray-500" size={18} />
                         </div>
@@ -85,7 +85,7 @@ const SearchProjects = () => {
                     { data.map((prop, key: number) => <ProjectCard data={prop} key={key} />) }
                 </div>
                 <div className="flex justify-center">
-                    <button className="border-[1px] border-teal-700 text-teal-700 font-bold px-6 py-3 rounded-[4px] text-sm hover:bg-teal-700 hover:text-white transition-all duration-300">Load more</button>
+                    <button className="border border-teal-700 text-teal-700 font-bold px-6 py-3 rounded-[4px] text-sm hover:bg-teal-700 hover:text-white transition-all duration-300">Load more</button>
                 </div>
             </div>
         </div>

@@ -86,11 +86,11 @@ const Login = () => {
                 <div className="pt-3 text-gray-500">Welcome back! Please enter your details.</div>
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Email</div>
-                    <input type="email" value={email} onChange={handleChangeEmail} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your email" autoComplete="on" />
+                    <input type="email" value={email} onChange={handleChangeEmail} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter your email" autoComplete="on" />
                 </div>
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Password</div>
-                    <input type="password" value={password} onChange={handleChangePassword} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your password" autoComplete="on" />
+                    <input type="password" value={password} onChange={handleChangePassword} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter your password" autoComplete="on" />
                 </div>
                 <div className="flex justify-between w-full py-5">
                     <div className="flex items-center">
@@ -100,7 +100,7 @@ const Login = () => {
                     <Link to={URL.PASSWORD_EMAIL} className="font-bold text-teal-700">Forget password</Link>
                 </div>
                 <button type="submit" ref={el => loginButton = el} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign in</button>
-                <button type="button" onClick={handleMetamaskLogin} className="flex rounded-[4px] justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
+                <button type="button" onClick={handleMetamaskLogin} className="flex rounded-[4px] justify-center w-full py-2 mt-3 border border-slate-200">
                     <img src={iconMetamask} alt="" />
                     <div className="pl-1 font-bold">Sign in with Metamask</div>
                 </button>

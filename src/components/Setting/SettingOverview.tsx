@@ -40,11 +40,11 @@ const SettingOverview = ({data, setData}) => {
                     <div className="flex gap-3">
                         <div className="flex-1">
                             <div className="pb-1 font-bold">Name</div>
-                            <input type="text" value={data.name || ""} onChange={changeName} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter fundraising name" />
+                            <input type="text" value={data.name || ""} onChange={changeName} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter fundraising name" />
                         </div>
                         <div className="flex-1">
                             <div className="pb-1 font-bold">Goal</div>
-                            <CurrencyInput value={data.amount} onValueChange={changeAmount} suffix=" ETH" placeholder="Please enter your goal" className="w-full py-2 px-3 rounded-[4px] focus:outline-none border-[1px] border-slate-200" />
+                            <CurrencyInput value={data.amount} onValueChange={changeAmount} suffix=" ETH" placeholder="Please enter your goal" className="w-full py-2 px-3 rounded-[4px] focus:outline-none border border-slate-200" />
                         </div>
                     </div>
                     <div className="pt-4">
@@ -103,7 +103,7 @@ const SettingOverview = ({data, setData}) => {
                     <p className="text-sm text-gray-500">You will no longer have access to this fundraiser after deleting.</p>
                     <p className="text-sm text-gray-500">If you wnat to continue with this action, type "delete" below.</p>
                     <hr className="my-4" />
-                    <input type="text" onChange={handleChange} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" autoComplete="off" placeholder="delete" />
+                    <input type="text" onChange={handleChange} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" autoComplete="off" placeholder="delete" />
                     <button type="submit" className="w-full py-2 mt-4 font-bold text-white transition-all duration-200 bg-teal-700 disabled:opacity-70 rounded-[4px]" disabled={!isValid}>Delete fundraiser</button>
                 </form>
             </Modal>

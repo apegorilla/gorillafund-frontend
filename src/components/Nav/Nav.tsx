@@ -29,7 +29,7 @@ const Nav = () => {
                         <Menu menuButton={
                                 <div className="flex items-center justify-end gap-3 cursor-pointer">
                                     <div>{getUserName(user)}</div>
-                                    <img src={user.avatar} className="rounded-full w-8 h-8 border-[1px] bg-teal-300" alt="" />
+                                    <img src={user.avatar} className="rounded-full w-8 h-8 border bg-teal-300" alt="" />
                                 </div>
                         } align="end" transition>
                             <Link to={URL.DASHBOARD}><MenuItem>Dashboard</MenuItem></Link>
@@ -43,7 +43,7 @@ const Nav = () => {
                         <Link to={URL.SEARCH} className="text-gray-500 hover:text-black">
                             <div>Discover</div>
                         </Link>
-                        <Link to={URL.LOGIN} className="px-5 py-1 text-teal-600 border-[1px] border-teal-600 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300">
+                        <Link to={URL.LOGIN} className="px-5 py-1 text-teal-600 border border-teal-600 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300">
                             <div>Get started</div>
                         </Link>
                     </div>

@@ -5,7 +5,7 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const Comment = () => {
     return (
         <>
-            <div className="grid grid-cols-1 divide-y-[1px]">
+            <div className="grid grid-cols-1 divide-y">
                 {
                     // [1,1,1,1,1,1,1,1,1,1].map((val, index) => 
                     //     <div className="flex gap-3 px-6 py-4" key={index}>

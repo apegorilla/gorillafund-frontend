@@ -41,7 +41,7 @@ const NavAuth = () => {
                 <div className="">
                     <Menu menuButton={
                         <div className="flex items-center justify-end gap-3 cursor-pointer">
-                            <img src={user.avatar} className="rounded-full w-8 h-8 border-[1px] bg-teal-300" alt="" />
+                            <img src={user.avatar} className="rounded-full w-8 h-8 border bg-teal-300" alt="" />
                             <div className="hidden xs:block">{getUserName(user)}</div>
                             <IoIosArrowDown className="hidden xs:block" />
                         </div>

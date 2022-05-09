@@ -47,37 +47,37 @@ const KYCID = () => {
             <div className="pt-6 text-2xl font-bold">Identification</div>
             <div className="pt-3 text-center text-gray-500">To verify corporate's identity, fill evidence of identification and upload a preferred form or forms of identification.</div>
             <div className="grid w-full grid-cols-3 gap-3 pt-6 text-gray-500">
-                <div onClick={changeType(1)} className={`flex items-center gap-3 border-[1px] px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 1 && "border-teal-700"}`}>
+                <div onClick={changeType(1)} className={`flex items-center gap-3 border px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 1 && "border-teal-700"}`}>
                     <img src={identifyType === 1 ? iconPassport : iconPassportGray} alt="" />
                     <div className={`font-semibold ${identifyType === 1 && "text-teal-700"}`}>Passport</div>
                 </div>
-                <div onClick={changeType(2)} className={`flex items-center gap-3 border-[1px] px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 2 && "border-teal-700"}`}>
+                <div onClick={changeType(2)} className={`flex items-center gap-3 border px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 2 && "border-teal-700"}`}>
                     <img src={identifyType === 2 ? iconID : iconIDGray} alt="" />
                     <div className={`font-semibold ${identifyType === 2 && "text-teal-700"}`}>National ID</div>
                 </div>
-                <div onClick={changeType(3)} className={`flex items-center gap-3 border-[1px] px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 3 && "border-teal-700"}`}>
+                <div onClick={changeType(3)} className={`flex items-center gap-3 border px-2 py-4 cursor-pointer rounded-[4px] ${identifyType === 3 && "border-teal-700"}`}>
                     <img src={identifyType === 3 ? iconDrive : iconDriveGray} alt="" />
                     <div className={`font-semibold ${identifyType === 3 && "text-teal-700"}`}>Driving Licence</div>
                 </div>
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Identify Number*</div>
-                <input type="text" value={identifyNumber} onChange={changeNumber} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Identity Number" />
+                <input type="text" value={identifyNumber} onChange={changeNumber} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Identity Number" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Date of Expiry*</div>
-                <input type="date" value={identifyExpire} onChange={changeExpire} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Identity Number" />
+                <input type="date" value={identifyExpire} onChange={changeExpire} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Identity Number" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Document upload*</div>
-                <div onClick={inputImg1} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
+                <div onClick={inputImg1} className="border bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                     <FiPaperclip size={20} className="rotate-45" />
                     <div className="w-full px-3 py-2 text-gray-500">{doc1 ? doc1.name : "Click here to attach file"}</div>
                 </div>
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Document upload*</div>
-                <div onClick={inputImg2} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
+                <div onClick={inputImg2} className="border bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                     <FiPaperclip size={20} className="rotate-45" />
                     <div className="w-full px-3 py-2 text-gray-500">{doc2 ? doc2.name : "Click here to attach file"}</div>
                 </div>

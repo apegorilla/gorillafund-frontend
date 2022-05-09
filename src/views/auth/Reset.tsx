@@ -73,12 +73,12 @@ const Reset = () => {
                     <div className="pt-3 text-center text-gray-500">Your new password must be different to previously used passwords.</div>
                     <div className="flex flex-col w-full pt-6">
                         <div className="pb-1 font-bold">Password*</div>
-                        <input type="password" onChange={handleChange1} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your email" />
+                        <input type="password" onChange={handleChange1} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter your email" />
                         <div className="pt-2 text-gray-500">Must be at least 8 characters.</div>
                     </div>
                     <div className="flex flex-col w-full py-6">
                         <div className="pb-1 font-bold">Confirm Password*</div>
-                        <input type="password" onChange={handleChange2} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your password" />
+                        <input type="password" onChange={handleChange2} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter your password" />
                     </div>
                     <button onClick={handleClick} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700">Reset Password</button>
                     <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">

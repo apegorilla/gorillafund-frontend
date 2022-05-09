@@ -21,19 +21,19 @@ const Stepper = ({step, data}: {step: number, data: StepInterface[]}) => {
                             <div className="flex items-center gap-2 bg-white" key={key}>
                                 {
                                     step > key + 1 && 
-                                    <div className="flex items-center justify-center h-7 border-[1px] border-teal-700 w-[28px] rounded-full">
+                                    <div className="flex items-center justify-center h-7 border border-teal-700 w-[28px] rounded-full">
                                         <FiCheck className="text-teal-700" />
                                     </div>
                                 }
                                 {
                                     step === key + 1 &&
-                                    <div className="flex items-center justify-center h-7 border-[1px] border-teal-700 w-[28px] rounded-full">
+                                    <div className="flex items-center justify-center h-7 border border-teal-700 w-[28px] rounded-full">
                                         <FaCircle className="text-teal-700" size={14} />
                                     </div>
                                 }
                                 {
                                     step < key + 1 &&
-                                    <div className="flex items-center justify-center h-7 border-[1px] border-gray-200 w-[28px] rounded-full">
+                                    <div className="flex items-center justify-center h-7 border border-gray-200 w-[28px] rounded-full">
                                         <FaCircle className="text-gray-200" size={14} />
                                     </div>
                                 }

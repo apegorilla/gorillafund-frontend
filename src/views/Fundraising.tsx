@@ -50,7 +50,7 @@ const FundraisingPage = () => {
                     user.loggedIn ? 
                     <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 pr-10 cursor-pointer">
                         <div>{user.username || addressFormat(user.walletAddress)}</div>
-                        <img src={user.avatar} className="rounded-full w-8 h-8 border-[1px] bg-teal-300" alt="" />
+                        <img src={user.avatar} className="rounded-full w-8 h-8 border bg-teal-300" alt="" />
                     </Link> :
                     <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>
                 }

@@ -5,7 +5,7 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const Donation = ({ donates }) => {
     return (
         <>
-            <div className="grid grid-cols-1 divide-y-[1px]">
+            <div className="grid grid-cols-1 divide-y">
                 {
                     donates?.length ?
                     donates?.map((donate, key) => 

@@ -155,20 +155,20 @@ const ProfilePage = ({submit, setSubmit}) => {
                         <div className="flex gap-3">
                             <div className="w-full">
                                 <div className="pb-2 font-bold">First name</div>
-                                <input type="text" value={firstName} onChange={onChangeFirst} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="First name" />
+                                <input type="text" value={firstName} onChange={onChangeFirst} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border border-slate-200" placeholder="First name" />
                             </div>
                             <div className="w-full">
                                 <div className="pb-2 font-bold">Last name</div>
-                                <input type="text" value={lastName} onChange={onChangeLast} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Last name" />
+                                <input type="text" value={lastName} onChange={onChangeLast} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border border-slate-200" placeholder="Last name" />
                             </div>
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Username</div>
-                            <input type="text" value={username} onChange={onChangeName} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Username" />
+                            <input type="text" value={username} onChange={onChangeName} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border border-slate-200" placeholder="Username" />
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Email address</div>
-                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-[4px] bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <AiOutlineMail className="text-gray-500" size={16} />
                                 </div>
@@ -177,7 +177,7 @@ const ProfilePage = ({submit, setSubmit}) => {
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Phone number</div>
-                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-[4px] bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <MdOutlinePhone className="text-gray-500" size={16} />
                                 </div>
@@ -186,7 +186,7 @@ const ProfilePage = ({submit, setSubmit}) => {
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Residental address</div>
-                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-[4px] bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <GoLocation className="text-gray-500" size={16} />
                                 </div>
@@ -200,11 +200,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                         <div className="flex gap-3 pt-4">
                             <div className="w-full">
                                 <div className="pb-2 font-bold">City</div>
-                                <input type="text" value={city} onChange={onChangeCity} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="City" />
+                                <input type="text" value={city} onChange={onChangeCity} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border border-slate-200" placeholder="City" />
                             </div>
                             <div className="w-full">
                                 <div className="pb-2 font-bold">Zip code</div>
-                                <input type="text" value={zipCode} onChange={onChangeZip} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Zip code" />
+                                <input type="text" value={zipCode} onChange={onChangeZip} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border border-slate-200" placeholder="Zip code" />
                             </div>
                         </div>
                     </div>

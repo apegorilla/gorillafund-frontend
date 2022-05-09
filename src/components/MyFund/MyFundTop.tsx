@@ -43,11 +43,11 @@ const MyFundTop = ({ fund }) => {
                     <div className="text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex gap-3">
-                    <Link to={URL.SETTING.replace(':uid', data.uid || '')} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
+                    <Link to={URL.SETTING.replace(':uid', data.uid || '')} className="flex rounded-[4px] items-center gap-2 border py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <MdOutlineSettings size={20} />
                         <div className="text-sm font-bold">Setting</div>
                     </Link>
-                    <button onClick={handleOpen} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
+                    <button onClick={handleOpen} className="flex rounded-[4px] items-center gap-2 border py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <FiShare2 size={20} />
                         <div className="text-sm font-bold">Share fundraiser</div>
                     </button>
@@ -62,23 +62,23 @@ const MyFundTop = ({ fund }) => {
                     <div className="pt-2 text-sm text-gray-500">Fundraisers shared on social networks raise up to 5x more</div>
                     <hr className="my-5" />
                     <div className="grid grid-cols-3 gap-3 text-sm font-semibold text-gray-500">
-                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <BsFacebook size={30} className="text-blue-600" />
                             <div>Facebook</div>
                         </a>
-                        <a href={`https://twitter.com/intent/tweet/?text=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}&via=${APP_NAME}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                        <a href={`https://twitter.com/intent/tweet/?text=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}&via=${APP_NAME}`} target="_blank" rel="noreferrer" className="border flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <ImTwitter size={30} className="text-sky-500" />
                             <div>Twitter</div>
                         </a>
-                        <a href={`https://www.linkedin.com/shareArticle?mini=true&source=${APP_NAME}&title=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                        <a href={`https://www.linkedin.com/shareArticle?mini=true&source=${APP_NAME}&title=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <BsLinkedin size={30} />
                             <div>LinkedIn</div>
                         </a>
-                        <a href={SOCIAL.DISCORD} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                        <a href={SOCIAL.DISCORD} target="_blank" rel="noreferrer" className="border flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <BsDiscord size={30} className="text-indigo-400" />
                             <div>Discord</div>
                         </a>
-                        <a href={`mailto:?body=Check it out: ${APP_URL + URL.FUND.replace(':uid', data.uid)} via ${APP_NAME}&subject=${data.name}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                        <a href={`mailto:?body=Check it out: ${APP_URL + URL.FUND.replace(':uid', data.uid)} via ${APP_NAME}&subject=${data.name}`} target="_blank" rel="noreferrer" className="border flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <AiOutlineMail size={30} />
                             <div>Email</div>
                         </a>

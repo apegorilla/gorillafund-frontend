@@ -33,10 +33,10 @@ const HomeStories = () => {
                         <div className="py-5 font-bold text-gray-500">Ape Gorilla NFT project is donating 20% of Public Sales to Gorilla Fund proposals.</div>
                     </div>
                     <div className="flex items-center gap-5">
-                        <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={prevStory}>
+                        <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={prevStory}>
                             <IoIosArrowBack size={15} />
                         </button>
-                        <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={nextStory}>
+                        <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={nextStory}>
                             <IoIosArrowForward size={15} />
                         </button>
                         <div className="flex">

@@ -40,7 +40,7 @@ const PasswordPage = ({submit, setSubmit}) => {
                     <div className="max-w-[400px] text-sm">
                         <div className="">
                             <div className="pb-2 font-bold">Current password</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-sm bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>
@@ -49,7 +49,7 @@ const PasswordPage = ({submit, setSubmit}) => {
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">New password</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-sm bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>
@@ -59,7 +59,7 @@ const PasswordPage = ({submit, setSubmit}) => {
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Re-enter password</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-sm bg-white w-full border border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>

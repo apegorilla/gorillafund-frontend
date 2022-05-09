@@ -23,11 +23,11 @@ const FundStory = () => {
             <div className="pt-3 text-center text-gray-500">Please fill in your information to proceed with creating a fundraising.</div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Headline</div>
-                <input type="text" value={head} onChange={onChangeHead} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a headline" />
+                <input type="text" value={head} onChange={onChangeHead} className="w-full py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter a headline" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Description</div>
-                <textarea value={desc} onChange={onChangeDesc} className="w-full h-[150px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a description..." />
+                <textarea value={desc} onChange={onChangeDesc} className="w-full h-[150px] py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter a description..." />
             </div>
             <button onClick={handleNext} className="w-full py-2 mt-6 text-white bg-teal-700 rounded-[4px]">Continue</button>
             <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 transition-all duration-200 bg-white border border-white hover:border-teal-700 rounded-[4px]">

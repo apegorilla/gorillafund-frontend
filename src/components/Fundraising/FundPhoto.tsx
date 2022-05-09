@@ -61,7 +61,7 @@ const FundPhoto = () => {
                 photo ? <img onClick={handleClick} src={photo} className="w-full mt-6 border-2 border-teal-700 rounded-md cursor-pointer" alt="" /> :
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Cover Image*</div>
-                    <div onClick={handleClick} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
+                    <div onClick={handleClick} className="border bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                         <FiPaperclip size={20} className="rotate-45" />
                         <div className="w-full px-3 py-2 text-gray-500">Click here to attach file</div>
                     </div>
