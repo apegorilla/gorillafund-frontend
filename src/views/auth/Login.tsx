@@ -37,10 +37,9 @@ const Login = () => {
                 toast.success('Welcome back!');
                 logIn(res.data.token);
                 navigate(redirect);
-                loginButton.disabled = false;
             })
             .catch(err => {
-                loginButton.disabled = false;
+                loginButton && (loginButton.disabled = false);
                 if(!err.response) toast.error("Sever do not response.");
                 else if(err.response.data.message) toast.error(err.response.data.message);
                 else toast.error(err.message);

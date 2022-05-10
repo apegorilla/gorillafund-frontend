@@ -45,10 +45,9 @@ const Signup = () => {
             .then(res => {
                 logIn(res.data.token);
                 navigate(URL.EMAIL_VERIFY);
-                signupButton.disabled = false;
             })
             .catch(err => {
-                signupButton.disabled = false;
+                signupButton && (signupButton.disabled = false);
                 if(!err.response) toast.error("You're offline.");
                 else if(err.response.status === 409) toast.error(err.response.data.message);
                 else toast.error(err.message);
