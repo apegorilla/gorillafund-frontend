@@ -4,7 +4,7 @@ import FundAPI from "api/fund";
 import Nav from "components/Nav/Nav";
 import StartFundraising from "components/Footer/StartFundraising";
 import FundContent from "components/Fund/FundContent";
-import FundDonations from "components/Fund/FundDonation";
+import FundComments from "components/Fund/FundComment";
 import FundLeft from "components/Fund/FundLeft";
 import FundProject from "components/Fund/FundProject";
 import Footer from "components/Footer/Footer";
@@ -30,11 +30,11 @@ const Fund = () => {
                     <div className="py-6 pt-1 text-sm text-gray-500">{fund.headline}</div>
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
-                    <FundContent photo={fund.image} categoryId={fund.categoryId} date={fund.createdAt} story={fund.description} />
+                    <FundContent id={fund.id} uid={fund.uid} photo={fund.image} categoryId={fund.categoryId} date={fund.createdAt} story={fund.description} followers={fund.followCnt} />
                     <FundLeft uid={fund.uid} raised={fund.sumDonateETH} cnt={fund.cntDonate} donations={fund.donates} goal={fund.amount} />
                 </div>
                 <hr className="my-5" />
-                <FundDonations organizer={fund.user} cnt={fund.cntDonate} donations={fund.donates} />
+                <FundComments organizer={fund.user} cnt={fund.cntDonate} donations={fund.donates} />
                 <FundProject />
             </div>
             <StartFundraising />

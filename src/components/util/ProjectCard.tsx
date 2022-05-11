@@ -4,6 +4,7 @@ import Progress from "components/util/Progress";
 import { URL } from "libs/constants";
 import { nFormatter, timeAgoFormat } from "libs/utils";
 import { AiOutlineEye } from "react-icons/ai";
+import { FiThumbsUp } from "react-icons/fi";
 
 const ProjectCard = ({data, className}: {data: any, className?: string}) => {
     return (
@@ -17,6 +18,8 @@ const ProjectCard = ({data, className}: {data: any, className?: string}) => {
                     <div className="flex items-center gap-2">
                         <AiOutlineEye />
                         <div>{data.viewCnt}</div>
+                        <FiThumbsUp />
+                        <div>{data.followCnt}</div>
                     </div>
                 </div>
                 <Progress percent={data.raised / data.amount * 100} />

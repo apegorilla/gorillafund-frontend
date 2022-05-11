@@ -11,7 +11,9 @@ const FundAPI = {
     search: condition => API.get('/fund/search', { params: condition }),
     photoUpload: formData => API.post('/fund/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
     delete: uid => API.delete('/fund/' + uid),
-    isNftVerify: () => API.get('/fund/isNftVerify')
+    isNftVerify: () => API.get('/fund/isNftVerify'),
+    follow: (uid: string, isFollow: boolean) => API.post('/fund/follow', { uid, isFollow }),
+    isFollow: id => API.post('/fund/is_follow', { id })
 }
 
 export default FundAPI;
