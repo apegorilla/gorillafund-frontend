@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUserName, timeAgoFormat } from "libs/utils";
 
-const FundDonations = ({ organizer, cnt, donations }) => {
+const FundComments = ({ organizer, cnt, donations }) => {
     const [ DOM, setDOM ] = useState<JSX.Element>(
         <div className="p-3 max-w-[500px] text-gray-500 text-sm">
             <div className="">
@@ -90,4 +90,4 @@ const FundDonations = ({ organizer, cnt, donations }) => {
     return DOM;
 }
 
-export default FundDonations;
+export default FundComments;
