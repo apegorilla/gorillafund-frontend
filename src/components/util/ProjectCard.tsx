@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Progress from "components/util/Progress";
 import { URL } from "libs/constants";
 import { nFormatter, timeAgoFormat } from "libs/utils";
+import { AiOutlineEye } from "react-icons/ai";
 
 const ProjectCard = ({data, className}: {data: any, className?: string}) => {
     return (
@@ -11,7 +12,13 @@ const ProjectCard = ({data, className}: {data: any, className?: string}) => {
             <div className="flex flex-col px-4 py-5">
                 <div className="text-lg font-bold text-black line-clamp-1">{data.headline}</div>
                 <div className="pt-2 text-justify line-clamp-4">{data.description}</div>
-                <div className="pt-10 pb-3">{"Created " + timeAgoFormat(data.createdAt)}</div>
+                <div className="flex justify-between pt-10 pb-3">
+                    <div>{"Created " + timeAgoFormat(data.createdAt)}</div>
+                    <div className="flex items-center gap-2">
+                        <AiOutlineEye />
+                        <div>{data.viewCnt}</div>
+                    </div>
+                </div>
                 <Progress percent={data.raised / data.amount * 100} />
                 <div className="flex justify-between pt-5">
                     <div className="font-bold text-black">ETH {data.raised || 0} raised</div>
