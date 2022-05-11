@@ -16,7 +16,8 @@ const AdminAPI = {
     users: () => API.get('/admin/users'),
     deleteUser: (id: number) => API.delete('/admin/user/' + id),
     donates: () => API.get('/admin/donates'),
-    setNftVerify: (enable: boolean) => API.put('/admin/setNftVerify', { nftVerify: enable })
+    setNftVerify: (enable: boolean) => API.put('/admin/setNftVerify', { nftVerify: enable }),
+    counts: () => API.get('/admin/counts')
 }
 
 export default AdminAPI;

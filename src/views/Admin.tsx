@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import AdminAPI from "api/admin";
 import { URL, APP_NAME } from "libs/constants";
 import { AiOutlineFund, AiOutlineSetting } from "react-icons/ai";
 import { BiDonateHeart } from "react-icons/bi";
@@ -8,8 +9,14 @@ import { FiUsers } from "react-icons/fi";
 import logo from "assets/img/svg/gorilla.svg";
 import avatar from "assets/img/home/banner_big.png";
 import AdminProvider, { useAdminAuth } from "contexts/AdminContext";
+import toast from "react-hot-toast";
 
 const AdminHeader = () => {
+    const [ counts, setCounts ] = useState<any>({
+        users: 0,
+        funds: 0,
+        donates: 0
+    });
     const navigate = useNavigate();
     const { email, setEmail } = useAdminAuth();
     const logOut = () => {
@@ -17,6 +24,11 @@ const AdminHeader = () => {
         setEmail("");
         navigate(URL.ADMIN);
     }
+    useEffect(() => {
+        AdminAPI.counts()
+        .then(res => setCounts(res.data))
+        .catch(err => toast.error(err.message));
+    }, []);
 
     return (
         <Fragment>
@@ -38,10 +50,21 @@ const AdminHeader = () => {
                 {
                     email &&
                     <div className="flex items-center w-full h-12 gap-10 px-8 border-b border-slate-300 bg-slate-200">
-                        <NavLink to={URL.ADMIN_USERS} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><FiUsers size={25} /></NavLink>
-                        <NavLink to={URL.ADMIN_FUNDS} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><AiOutlineFund size={25} /></NavLink>
-                        <NavLink to={URL.ADMIN_DONATES} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><BiDonateHeart size={25} /></NavLink>
-                        <NavLink to={URL.ADMIN_SETTING} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}><AiOutlineSetting size={25} /></NavLink>
+                        <NavLink to={URL.ADMIN_USERS} className={({ isActive }) => "relative p-2 " + (isActive ? "text-teal-700" : "text-slate-400")}>
+                            <FiUsers size={30} />
+                            <span className="absolute top-0 px-2 text-xs font-semibold text-white bg-red-600 border-2 rounded-md -right-1 border-slate-200">{counts.users}</span>
+                        </NavLink>
+                        <NavLink to={URL.ADMIN_FUNDS} className={({ isActive }) => "relative p-2 " + (isActive ? "text-teal-700" : "text-slate-400")}>
+                            <AiOutlineFund size={30} />
+                            <span className="absolute top-0 px-2 text-xs font-semibold text-white bg-red-600 border-2 rounded-md -right-1 border-slate-200">{counts.funds}</span>
+                        </NavLink>
+                        <NavLink to={URL.ADMIN_DONATES} className={({ isActive }) => "relative p-2 " + (isActive ? "text-teal-700" : "text-slate-400")}>
+                            <BiDonateHeart size={30} />
+                            <span className="absolute top-0 px-2 text-xs font-semibold text-white bg-red-600 border-2 rounded-md -right-1 border-slate-200">{counts.donates}</span>
+                        </NavLink>
+                        <NavLink to={URL.ADMIN_SETTING} className={({ isActive }) => isActive ? "text-teal-700" : "text-slate-400"}>
+                            <AiOutlineSetting size={30} />
+                        </NavLink>
                     </div>
                 }
             </div>
