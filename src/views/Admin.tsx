@@ -25,10 +25,10 @@ const AdminHeader = () => {
         navigate(URL.ADMIN);
     }
     useEffect(() => {
-        AdminAPI.counts()
+        email && AdminAPI.counts()
         .then(res => setCounts(res.data))
         .catch(err => toast.error(err.message));
-    }, []);
+    }, [email]);
 
     return (
         <Fragment>
