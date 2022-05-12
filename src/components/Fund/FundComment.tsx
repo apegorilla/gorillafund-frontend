@@ -1,7 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import CommentAPI from "api/comment";
+import { useAuth } from "contexts/AuthContext";
 import { getUserName, timeAgoFormat } from "libs/utils";
 
-const FundComments = ({ organizer, cnt, donations }) => {
+const FundComments = ({ id, organizer, comments }) => {
+    const { user } = useAuth();
+    const [ leaved, setLeaved ] = useState<boolean>(false);
+    const [ comment, setComment ] = useState<string>("");
+
+    const onChangeComment = e => setComment(e.target.value);
+    const onLeaveComment = useCallback(() => {
+        if(comment.length < 10) return toast.error('Comment must be at least 10 characters.');
+        CommentAPI.create({
+            fundId: id,
+            comment: comment
+        })
+        .then(res => {
+            setLeaved(true);
+            toast.success('Thank you for comment.');
+        })
+        .catch(err => toast.error(err.message));
+    }, [comment, id]);
+
     const [ DOM, setDOM ] = useState<JSX.Element>(
         <div className="p-3 max-w-[500px] text-gray-500 text-sm">
             <div className="">
@@ -20,7 +41,7 @@ const FundComments = ({ organizer, cnt, donations }) => {
             <hr className="my-3" />
             <div className="flex flex-col gap-5">
                 <div className="flex items-end justify-between pt-2">
-                    <div className="text-lg font-bold text-black">Donations</div>
+                    <div className="text-lg font-bold text-black">Comments</div>
                     <div className="text-teal-700 cursor-pointer hover:font-bold">See all</div>
                 </div>
                 {
@@ -42,7 +63,7 @@ const FundComments = ({ organizer, cnt, donations }) => {
         </div>
     );
 
-    useEffect(() => organizer && donations && setDOM(
+    useEffect(() => organizer && comments && setDOM(
         <div className="p-3 max-w-[500px] text-gray-500 text-sm">
             <div className="">
                 <div className="text-lg font-bold text-black">Organizer</div>
@@ -60,32 +81,57 @@ const FundComments = ({ organizer, cnt, donations }) => {
             <hr className="my-3" />
             <div className="flex flex-col gap-5">
                 <div className="flex items-end justify-between pt-2">
-                    <div className="text-lg font-bold text-black">Donations ({cnt})</div>
+                    <div className="text-lg font-bold text-black">Comments ({comments.length})</div>
                     <div className="text-teal-700 cursor-pointer hover:font-bold">See all</div>
                 </div>
                 {
-                    cnt ?
-                    donations?.map((donation, key) => (
+                    comments.length ?
+                    comments?.map((comment, key) => (
                         <div className="flex gap-3" key={key}>
-                            <img src={donation.user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
+                            <img src={comment.user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
                             <div className="flex flex-col flex-1 gap-2">
                                 <div className="flex flex-wrap justify-between gap-3">
-                                    <div className="text-gray-500"><span className="font-bold text-black">{donation.user.firstName + ' ' + donation.user.lastName}</span> donated {donation.ethAmount} ETH</div>
-                                    <div className="text-gray-500">{timeAgoFormat(donation.createdAt)}</div>
+                                    <div className="font-bold text-black">{getUserName(comment.user)}</div>
+                                    <div className="text-gray-500">{timeAgoFormat(comment.createdAt)}</div>
                                 </div>
-                                <div>{donation.comment || "No comments ..."}</div>
+                                <div>{comment.comment || "No comments ..."}</div>
                             </div>
                         </div>
                     )) :
-                    <div className="pl-3">No donations yet ...</div>
+                    <div className="pl-3">No comments yet ...</div>
                 }
-                <hr />
-                <div className="pl-12">
-                    <button className="font-bold rounded-[4px] px-4 py-2 transition-all duration-200 text-center bg-slate-200 text-black hover:text-white hover:bg-teal-700">Load more</button>
-                </div>
+                {
+                    leaved ? 
+                    <>
+                        <div className="flex gap-3">
+                            <img src={user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
+                            <div className="flex flex-col flex-1 gap-2">
+                                <div className="flex flex-wrap justify-between gap-3">
+                                    <div className="font-bold text-black">{getUserName(user)}</div>
+                                    <div className="text-gray-500">just now</div>
+                                </div>
+                                <div>{comment}</div>
+                            </div>
+                        </div>
+                        <hr />
+                    </> :
+                    <>
+                        <hr />
+                        <div className="flex gap-3">
+                            <img src={user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
+                            <div className="flex flex-col flex-1 gap-2">
+                                <div className="font-bold text-black">{getUserName(user)}</div>
+                                <textarea value={comment} onChange={onChangeComment} className="w-full p-2 h-20 border outline-none rounded-[4px]" />
+                                <div className="flex justify-end">
+                                    <button onClick={onLeaveComment} className="font-bold rounded-[4px] px-4 py-2 transition-all duration-200 text-center bg-slate-200 text-black hover:text-white hover:bg-teal-700">Leave comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                }
             </div>
         </div>
-    ), [organizer, cnt, donations]);
+    ), [organizer, comments, comment, user, leaved, onLeaveComment]);
 
     return DOM;
 }

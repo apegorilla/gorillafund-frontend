@@ -5,7 +5,7 @@ import { getUserName, timeAgoFormat } from "libs/utils";
 import Progress from "components/util/Progress";
 import { FaEthereum } from "react-icons/fa";
 
-const FundLeft = ({ uid, raised, cnt, donations, goal }) => {
+const FundLeft = ({ uid, raised, donations, goal }) => {
     const [ DOM, setDOM ] = useState<JSX.Element>(
         <div className="flex flex-col gap-8 p-5 min-w-[380px] bg-white animate-pulse">
             <div className="w-full">
@@ -42,14 +42,14 @@ const FundLeft = ({ uid, raised, cnt, donations, goal }) => {
                         </span> pledged of {goal?.toLocaleString('en')} ETH goal
                     </div>
                 </div>
-                <div className="text-teal-700">{cnt} donations</div>
+                <div className="text-teal-700">{donations.length} donations</div>
                 <Progress percent={raised / goal * 100} className="mt-3 mb-8" />
                 <Link to={URL.DONATE.replace(':uid', uid)} className="inline-block font-bold rounded-[4px] w-full py-2 text-center text-white bg-teal-700">Donate now</Link>
             </div>
             <div className="flex flex-col gap-8">
-                <div className="text-base font-bold">Top donations</div>
+                <div className="text-base font-bold">Donations({donations.length})</div>
                 {
-                    cnt ?
+                    donations.length ?
                     donations?.map((donation, key) => (
                         <div className="flex gap-3" key={key}>
                             <img src={donation.user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
@@ -64,7 +64,7 @@ const FundLeft = ({ uid, raised, cnt, donations, goal }) => {
                 <button className="w-full bg-slate-200 rounded-[4px] transition-all duration-200 py-2 text-black font-bold hover:border-teal-700 hover:bg-teal-700 hover:text-white">See all donations</button>
             </div>
         </div>
-    ), [uid, raised, cnt, donations, goal]);
+    ), [uid, raised, donations, goal]);
 
     return DOM;
 }

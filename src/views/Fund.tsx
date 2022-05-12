@@ -31,10 +31,10 @@ const Fund = () => {
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
                     <FundContent id={fund.id} uid={fund.uid} photo={fund.image} categoryId={fund.categoryId} date={fund.createdAt} story={fund.description} followers={fund.followCnt} />
-                    <FundLeft uid={fund.uid} raised={fund.sumDonateETH} cnt={fund.cntDonate} donations={fund.donates} goal={fund.amount} />
+                    <FundLeft uid={fund.uid} raised={fund.sumDonateETH} donations={fund.donates} goal={fund.amount} />
                 </div>
                 <hr className="my-5" />
-                <FundComments organizer={fund.user} cnt={fund.cntDonate} donations={fund.donates} />
+                <FundComments id={fund.id} organizer={fund.user} comments={fund.comments} />
                 <FundProject />
             </div>
             <StartFundraising />
