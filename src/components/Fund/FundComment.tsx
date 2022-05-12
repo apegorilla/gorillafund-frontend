@@ -43,10 +43,7 @@ const FundComments = ({ id, organizer, comments }) => {
             </div>
             <hr className="my-3" />
             <div className="flex flex-col gap-5">
-                <div className="flex items-end justify-between pt-2">
-                    <div className="text-lg font-bold text-black">Comments</div>
-                    <div className="text-teal-700 cursor-pointer hover:font-bold">See all</div>
-                </div>
+                <div className="pt-2 text-lg font-bold text-black">Comments</div>
                 {
                     Array(3).fill(0).map((item, key) => (
                         <div className="flex gap-3 animate-pulse" key={key}>
@@ -83,10 +80,7 @@ const FundComments = ({ id, organizer, comments }) => {
             </div>
             <hr className="my-3" />
             <div className="flex flex-col gap-5">
-                <div className="flex items-end justify-between pt-2">
-                    <div className="text-lg font-bold text-black">Comments ({comments.length})</div>
-                    <div className="text-teal-700 cursor-pointer hover:font-bold">See all</div>
-                </div>
+                <div className="pt-2 text-lg font-bold text-black">Comments ({comments.length})</div>
                 {
                     comments.length ?
                     comments?.map((comment, key) => (

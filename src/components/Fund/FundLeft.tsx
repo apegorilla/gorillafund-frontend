@@ -7,7 +7,7 @@ import { FaEthereum } from "react-icons/fa";
 
 const FundLeft = ({ uid, raised, donations, goal }) => {
     const [ DOM, setDOM ] = useState<JSX.Element>(
-        <div className="flex flex-col gap-8 p-5 min-w-[380px] bg-white animate-pulse">
+        <div className="flex flex-col gap-8 p-5 md:w-[360px] w-full bg-white animate-pulse">
             <div className="w-full">
                 <div className="h-5 rounded-full bg-slate-300" />
                 <div className="w-40 h-4 mt-2 rounded-full bg-slate-300" />
@@ -32,7 +32,7 @@ const FundLeft = ({ uid, raised, donations, goal }) => {
     );
 
     useEffect(() => uid && donations && goal && setDOM(
-        <div className="flex flex-col gap-8 p-5 min-w-[380px] text-sm bg-white">
+        <div className="flex flex-col gap-8 p-5 md:w-[360px] w-full text-sm bg-white">
             <div className="w-full">
                 <div className="flex items-center">
                     <FaEthereum className="text-teal-700" size={20} />

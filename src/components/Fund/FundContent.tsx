@@ -10,7 +10,7 @@ import Loading from "components/util/Loading";
 const FundContent = ({ id, uid, photo, categoryId, date, story, followers }) => {
     const [ isFollow, setFollow ] = useState(false);
     const [ DOM, setDOM ] = useState<JSX.Element>(
-        <div className="max-w-[500px] flex-1 text-gray-500 text-sm">
+        <div className="flex-1 text-sm text-gray-500">
             <Loading />
         </div>
     );
@@ -31,7 +31,7 @@ const FundContent = ({ id, uid, photo, categoryId, date, story, followers }) => 
         .catch(err => {});
     }, [id]);
     useEffect(() => photo && categoryId && date && story && setDOM(
-        <div className="max-w-[500px] flex-1 text-gray-500 text-sm">
+        <div className="flex-1 text-sm text-gray-500">
             <img src={photo} alt="" />
             <div className="flex items-center justify-between py-5">
                 <div className="flex items-center gap-2">
