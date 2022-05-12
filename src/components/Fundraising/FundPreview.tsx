@@ -19,7 +19,7 @@ const FundPreview = () => {
             button.disabled = false;
         });
     }
-    const handlePrev = () => setStep(3);
+    const handlePrev = () => setStep(4);
 
     useEffect(() => {
         if(image) setURL(window.URL.createObjectURL(image));

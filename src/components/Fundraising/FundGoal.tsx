@@ -1,52 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import CurrencyInput from "react-currency-input-field";
 import { useFund } from "contexts/FundContext";
-import FundAPI from "api/fund";
-import { contract } from "libs/web3";
 import { FUNDCATEGORY } from "libs/constants";
-import logo from "assets/img/svg/gorilla.svg";
 import "assets/styles/ReactSelect.css";
-import WalletAddressInput from "components/util/WalletAddressInput";
+import { FiArrowLeft } from "react-icons/fi";
 
 const FundGoal = () => {
-    const { setStep, name, setName, category, setCategory, amount, setAmount, address, setAddress } = useFund();
-    const [ isNftVerify, setNftVerify ] = useState<boolean>(true);
+    const { setStep, name, setName, category, setCategory, amount, setAmount, address } = useFund();
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
-    const handleChangeAddress = val => setAddress(val);
-    const handleNext = async () => {
+    const handleNext = () => {
         if(!name.trim().length) return toast.error('Please input name of fundraising.');
         if(!amount) return toast.error('Please input amount of fundraising.');
         if(!category) return toast.error('Please select category.');
         if(!address) return toast.error('Please input your wallet address.');
-        if(isNftVerify) {
-            let balance;
-            try{
-                balance = await contract.methods.balanceOf(address).call();
-            }
-            catch(err) { toast.error((err as Error).message); }
-            if(isNaN(balance)) return ;
-            if(parseInt(balance) === 0) return toast.custom(() => (
-                <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
-                    <img src={logo} alt="" />
-                    <div>
-                        <p>You don't have ApeGorilla NFT in your wallet.</p>
-                        <p>Please mint an ApeGorilla from ApeGorilla.com to create a funding proposal.</p>
-                    </div>
-                </div>
-            ));
-        }
-        setStep(2);
+        setStep(3);
     }
-
-    useEffect(() => {
-        FundAPI.isNftVerify()
-        .then(res => setNftVerify(res.data.nftVerify))
-        .catch(err => toast.error(err.message));
-    }, []);
+    const handlePrev = () => setStep(1);
 
     return (
         <>
@@ -66,10 +39,13 @@ const FundGoal = () => {
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Ethereum Address*</div>
-                <WalletAddressInput value={address} onChange={handleChangeAddress} />
+                <input type="text" defaultValue={address} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border border-slate-200" disabled />
             </div>
             <button onClick={handleNext} className="w-full rounded-[4px] py-2 mt-6 text-white bg-teal-700">Next</button>
-            <div className="pt-5 text-center text-gray-500">By continuing, you agree to the GorillaFund terms and privacy policy.</div>
+            <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 transition-all duration-200 bg-white border border-white hover:border-teal-700 rounded-[4px]">
+                <FiArrowLeft size={16} />
+                <div className="pl-1 font-bold">Go back</div>
+            </button>
         </>
     )
 }

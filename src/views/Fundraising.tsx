@@ -10,6 +10,7 @@ import Stepper from "components/util/Stepper";
 import FundGoal from "components/Fundraising/FundGoal";
 import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
+import FundVerify from "components/Fundraising/FundVerify";
 import FundPreview from "components/Fundraising/FundPreview";
 import FundSuccess from "components/Fundraising/FundSuccess";
 import Logo from "assets/img/svg/gorilla.svg";
@@ -19,23 +20,28 @@ const FundraisingPage = () => {
     const { user } = useAuth();
     const [ data ] = useState<StepInterface[]>([
         {
+            title: "Verify",
+            text: "Confirm you are an Ape Gorilla Holder."
+        },
+        {
             title: "Detail and Goal",
-            text: "Please provide your personal details."
+            text: "Setup your Fundraising with all useful information."
         },
         {
             title: "Cover photo",
-            text: "Set amount that you are expecting to raise for the project."
+            text: "A high-quality photo will help tell your story."
         },
         {
             title: "Story",
-            text: "Sign in with your account or create an account if you don't have."
+            text: "Describe your fundraising."
         },
         {
             title: "Preview",
-            text: "Setup your Fundraising with all useful information."
+            text: "Confirm you fundraising."
         }
     ]);
     const stepComponent = [
+        <FundVerify />,
         <FundGoal />,
         <FundPhoto />,
         <FundStory />,
@@ -50,7 +56,7 @@ const FundraisingPage = () => {
                     user.loggedIn ? 
                     <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 pr-10 cursor-pointer">
                         <div>{user.username || addressFormat(user.walletAddress)}</div>
-                        <img src={user.avatar} className="rounded-full w-8 h-8 border bg-teal-300" alt="" />
+                        <img src={user.avatar} className="w-8 h-8 bg-teal-300 border rounded-full" alt="" />
                     </Link> :
                     <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>
                 }

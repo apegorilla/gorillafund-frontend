@@ -12,10 +12,10 @@ const FundStory = () => {
         let isValid = true;
         if(head.trim().length < 10) isValid = false;
         if(desc.trim().length < 10) isValid = false;
-        if(isValid) setStep(4);
+        if(isValid) setStep(5);
         else toast.error("Please provide correct details.");
     };
-    const handlePrev = () => setStep(2);
+    const handlePrev = () => setStep(3);
     
     return (
         <>
@@ -23,7 +23,7 @@ const FundStory = () => {
             <div className="pt-3 text-center text-gray-500">Please fill in your information to proceed with creating a fundraising.</div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Headline</div>
-                <input type="text" value={head} onChange={onChangeHead} className="w-full py-2 px-3 focus:outline-none border border-slate-200" placeholder="Enter a headline" />
+                <input type="text" value={head} onChange={onChangeHead} className="w-full px-3 py-2 border focus:outline-none border-slate-200" placeholder="Enter a headline" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Description</div>
