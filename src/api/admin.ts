@@ -13,6 +13,7 @@ const AdminAPI = {
     funds: () => API.get('/admin/funds'),
     fund: (uid: string) => API.get('/admin/fund/' + uid),
     approve: (uid: string) => API.put('/admin/approve/' + uid),
+    blur: (uid: string) => API.put('/admin/blur/' + uid),
     users: () => API.get('/admin/users'),
     deleteUser: (id: number) => API.delete('/admin/user/' + id),
     donates: () => API.get('/admin/donates'),

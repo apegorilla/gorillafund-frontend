@@ -17,9 +17,9 @@ const FundPhoto = () => {
     }
     const handleNext = () => {
         if(!image) return;
-        setStep(3);
+        setStep(4);
     }
-    const handlePrev = () => setStep(1);
+    const handlePrev = () => setStep(2);
 
     useEffect(() => {
         if(image) setURL(window.URL.createObjectURL(image));

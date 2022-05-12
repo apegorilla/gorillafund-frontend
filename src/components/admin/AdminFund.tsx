@@ -25,6 +25,15 @@ const AdminFund = () => {
         })
         .catch(err => toast.error(err.message));
     };
+    const onBlur = (uid: string) => {
+        return () => AdminAPI.blur(uid)
+        .then(res => {
+            loadData();
+            let message = res.data.isImageBlur ? "You set image blur." : "You set image clear.";
+            toast.success(message);
+        })
+        .catch(err => toast.error(err.message));
+    };
     const onClick = (uid: string) => {
         return () => AdminAPI.fund(uid)
         .then(res => {
@@ -59,6 +68,10 @@ const AdminFund = () => {
                                     <div className="flex gap-1">
                                         <span>Approved:</span>
                                         <Toggle onChange={onApprove(fund.uid)} checked={fund.approved} />
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <span>Image blur:</span>
+                                        <Toggle onChange={onBlur(fund.uid)} checked={fund.isImageBlur} />
                                     </div>
                                 </div>
                             </div>

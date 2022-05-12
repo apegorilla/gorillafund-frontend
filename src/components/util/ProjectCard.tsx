@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Progress from "components/util/Progress";
 import { URL } from "libs/constants";
 import { nFormatter, timeAgoFormat } from "libs/utils";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiThumbsUp } from "react-icons/fi";
 
 const ProjectCard = ({data, className}: {data: any, className?: string}) => {
+    const [ isBlur, setBlur ] = useState<boolean>(data.isImageBlur);
+    const blur = e => {
+        e.preventDefault();
+        setBlur(!isBlur);
+    }
+
     return (
-        <Link to={URL.FUND.replace(':uid', data.uid)} className={"flex flex-col text-sm text-gray-500 bg-white shadow-md transition-all duration-200 hover:shadow-xl hover:-translate-y-3 rounded-md " + className}>
-            <img src={data.image} className="object-cover h-44 rounded-t-md" alt="" />
+        <Link to={URL.FUND.replace(':uid', data.uid)} className={"flex flex-col text-sm text-gray-500 bg-white shadow-md transition-all duration-200 hover:shadow-xl hover:-translate-y-1 rounded-md " + className}>
+            <div className="relative overflow-clip rounded-t-md">
+                <img src={data.image} className={"object-cover w-full h-44" + (isBlur ? " blur-md" : "")} alt="" />
+                {
+                    isBlur ?
+                    <AiOutlineEye onClick={blur} className="absolute p-1 bg-white rounded-full opacity-50 hover:opacity-80 top-2 right-2" size={30} /> :
+                    <AiOutlineEyeInvisible onClick={blur} className="absolute p-1 bg-white rounded-full opacity-50 hover:opacity-80 top-2 right-2" size={30} />
+                }
+            </div>
             <div className="flex flex-col px-4 py-5">
                 <div className="text-lg font-bold text-black line-clamp-1">{data.headline}</div>
                 <div className="pt-2 text-justify line-clamp-4">{data.description}</div>
