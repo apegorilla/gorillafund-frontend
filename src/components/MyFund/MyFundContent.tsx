@@ -10,7 +10,7 @@ const MyFundContent = ({ fund }) => {
 
     useEffect(() => {
         index === 1 && setContent(<Donation donates={fund.donates} />);
-        index === 2 && setContent(<Comment />);
+        index === 2 && setContent(<Comment comments={fund.comments} />);
         index === 3 && setContent(<Update />);
     }, [index, fund])
 
