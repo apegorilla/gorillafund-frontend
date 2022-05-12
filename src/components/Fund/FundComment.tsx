@@ -20,7 +20,10 @@ const FundComments = ({ id, organizer, comments }) => {
             setLeaved(true);
             toast.success('Thank you for comment.');
         })
-        .catch(err => toast.error(err.message));
+        .catch(err => {
+            if(err.response.status === 401) toast.error('Please login to leave comment.');
+            else toast.error(err.message);
+        });
     }, [comment, id]);
 
     const [ DOM, setDOM ] = useState<JSX.Element>(
