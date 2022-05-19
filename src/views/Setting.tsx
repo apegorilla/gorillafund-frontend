@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FundAPI from "api/fund";
-import NavAuth from "components/Nav/NavAuth";
+import Nav from "components/Nav/Nav";
 import SettingPage from "components/Setting/SettingPage";
 import Footer from "components/Footer/Footer";
 import NotFound from "views/NotFound";
@@ -15,7 +15,7 @@ const Setting = () => {
 
     return is404 ? <NotFound /> : (
         <div>
-            <NavAuth />
+            <Nav />
             <SettingPage />
             <Footer />
         </div>

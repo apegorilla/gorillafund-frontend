@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FundAPI from "api/fund";
-import NavAuth from "components/Nav/NavAuth";
+import Nav from "components/Nav/Nav";
 import DashboardTop from "components/Dashboard/DashboardTop";
 import DashboardFund from "components/Dashboard/DashboardFund";
 import Footer from "components/Footer/Footer";
@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <NavAuth />
+            <Nav />
             <DashboardTop funds={funds} />
             <DashboardFund funds={funds} />
             <Footer />

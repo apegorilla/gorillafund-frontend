@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavAuth from "components/Nav/NavAuth";
+import Nav from "components/Nav/Nav";
 import ProfileMenu from "components/Profile/ProfileMenu";
 import ProfilePage from "components/Profile/ProfilePage";
 import PasswordPage from "components/Profile/PasswordPage";
@@ -19,7 +19,7 @@ const Profile = () => {
 
     return (
         <div>
-            <NavAuth />
+            <Nav />
             <ProfileMenu setSubmit={setSubmit} index={index} setIndex={setIndex} />
             {pages[index]}
             <Footer />
