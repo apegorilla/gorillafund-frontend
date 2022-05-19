@@ -17,6 +17,8 @@ import MyFund from "views/Myfund";
 import Setting from "views/Setting";
 import Pong from "views/Pong";
 import Profile from "views/Profile";
+import Invite from "views/Invite";
+import GetInvite from "views/GetInvite";
 import Admin from "views/Admin";
 import AdminAuth from "views/auth/Admin";
 import AdminUser from "components/admin/AdminUser";
@@ -96,6 +98,15 @@ const routes = [
         url: URL.PROFILE,
         component: <Profile />,
         auth: true
+    },
+    {
+        url: URL.INVITE,
+        component: <Invite />,
+        auth: true
+    },
+    {
+        url: URL.GET_INVITE,
+        component: <GetInvite />,
     },
     {
         url: URL.ADMIN,

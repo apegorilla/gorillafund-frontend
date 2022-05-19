@@ -8,7 +8,6 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import logo from "assets/img/svg/gorilla.svg";
 import { ImSearch } from "react-icons/im";
-import { IoIosArrowDown } from "react-icons/io";
 
 const Nav = () => {
     const { user, logOut } = useAuth();
@@ -47,9 +46,11 @@ const Nav = () => {
                                 <img src={user.avatar} className="w-8 h-8 bg-teal-300 border rounded-full" alt="" />
                             </div>
                         } align="end" transition>
-                            <Link to={URL.DASHBOARD}><MenuItem>Dashboard</MenuItem></Link>
-                            <Link to={URL.KYC}><MenuItem>KYC</MenuItem></Link>
-                            <Link to={URL.PROFILE}><MenuItem>Profile</MenuItem></Link>
+                            <Link to={URL.DASHBOARD}><MenuItem>My Dashboard</MenuItem></Link>
+                            <Link to={URL.KYC}><MenuItem>Know Your Customer</MenuItem></Link>
+                            <Link to={URL.PROFILE}><MenuItem>View Profile</MenuItem></Link>
+                            <MenuDivider />
+                            <Link to={URL.INVITE}><MenuItem>Invite friends</MenuItem></Link>
                             <MenuDivider />
                             <MenuItem onClick={handleLogout}>Log out</MenuItem>
                         </Menu>

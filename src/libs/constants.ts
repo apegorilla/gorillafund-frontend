@@ -14,6 +14,8 @@ export const URL = {
     FUND: '/fund/:uid',
     DONATE: '/donate/:uid',
     KYC: '/kyc',
+    INVITE: '/invite',
+    GET_INVITE: '/get/:uid',
     LOGIN: '/login',
     SIGNUP: '/signup',
     PASSWORD_EMAIL: '/email',

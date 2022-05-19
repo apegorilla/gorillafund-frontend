@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import validator from "validator";
 import { URL } from "libs/constants";
 import web3, { isWeb3Enable } from "libs/web3";
@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 const Signup = () => {
     var signupButton;
     const navigate = useNavigate();
+    const [ searchParams ] = useSearchParams();
     const [ username, setUsername ] = useState<string>("");
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
@@ -41,7 +42,8 @@ const Signup = () => {
             toast.error("Password must be at least 8 characters");
         }
         else {
-            Auth.signup({ username, email, password })
+            let refer = searchParams.get('refer');
+            Auth.signup({ username, email, password, refer })
             .then(res => {
                 logIn(res.data.token);
                 navigate(URL.EMAIL_VERIFY);

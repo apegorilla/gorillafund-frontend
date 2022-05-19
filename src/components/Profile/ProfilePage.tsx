@@ -48,7 +48,6 @@ const ProfilePage = ({submit, setSubmit}) => {
     const onChangeFirst = e => setFirst(e.target.value);
     const onChangeLast = e => setLast(e.target.value);
     const onChangeName = e => setName(e.target.value);
-    const onChangeEmail = e => setEmail(e.target.value);
     const onChangePhone = e => setPhone(e.target.value);
     const onChangeAddress = e => setAddress(e.target.value);
     const onChangeCity = e => setCity(e.target.value);
@@ -72,20 +71,19 @@ const ProfilePage = ({submit, setSubmit}) => {
         if(!firstName.trim().length) return toast.error('First name is required.');
         if(!lastName.trim().length) return toast.error('Last name is required.');
         if(!username.trim().length) return toast.error('Username is required.');
-        if(!validator.isEmail(email)) return toast.error('Email format is incorrect.');
         if(!phone.trim().length) return toast.error('Phone number is required.');
         if(!address.trim().length) return toast.error('Residental address is required.');
         if(!country) return toast.error('Country is required.');
         if(!city.trim().length) return toast.error('City is required.');
         if(!zipCode.trim().length) return toast.error('Zip code is required.');
-        const data = { firstName, lastName, username, email, phone, address, country, city, zipCode }
+        const data = { firstName, lastName, username, phone, address, country, city, zipCode }
         if(image) {
             const formData = new FormData();
             formData.append('avatar', image);
-            UserAPI.confirmEmail(email)
+            UserAPI.confirmUsername(username)
             .then(res => {
                 if(res.data.success) return UserAPI.avatarUpload(formData);
-                else throw new Error("Email already in use.");
+                else throw new Error("Username already in use.");
             })
             .then(res => UserAPI.updateProfile(data))
             .then(res => {
@@ -97,10 +95,10 @@ const ProfilePage = ({submit, setSubmit}) => {
             });
         }
         else {
-            UserAPI.confirmEmail(email)
+            UserAPI.confirmUsername(username)
             .then(res => {
                 if(res.data.success) return UserAPI.updateProfile(data);
-                else throw new Error("Email already in use.");
+                else throw new Error("Username already in use.");
             })
             .then(res => {
                 toast.success("Updated successfully");
@@ -110,7 +108,7 @@ const ProfilePage = ({submit, setSubmit}) => {
                 toast.error(err.message);
             });
         }
-    }, [address, city, country, email, firstName, image, lastName, phone, reload, setSubmit, username, zipCode]);
+    }, [address, city, country, firstName, image, lastName, phone, reload, setSubmit, username, zipCode]);
 
     useEffect(() => {
         if(submit) submitData();
@@ -172,7 +170,7 @@ const ProfilePage = ({submit, setSubmit}) => {
                                 <div className="flex items-center justify-center px-3">
                                     <AiOutlineMail className="text-gray-500" size={16} />
                                 </div>
-                                <input type="text" value={email} onChange={onChangeEmail} className="w-full rounded-[4px] py-2 pr-4 focus:outline-none" placeholder="Email address" />
+                                <input type="text" value={email} className="w-full rounded-[4px] py-2 pr-4 focus:outline-none" placeholder="Email address" readOnly />
                             </div>
                         </div>
                         <div className="pt-4">
