@@ -7,7 +7,7 @@ const GetInvite = () => {
     const navigate = useNavigate();
     useEffect(() => {
         navigate(URL.SIGNUP + '?refer=' + uid);
-    }, []);
+    }, [uid, navigate]);
     return <></>;
 }
 

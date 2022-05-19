@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
-import validator from "validator";
 import Modal from "components/util/Modal";
 import Auth from "api/auth";
 import UserAPI from "api/user";
