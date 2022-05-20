@@ -6,6 +6,7 @@ import Nav from "components/Nav/Nav";
 import Footer from "components/Footer/Footer";
 import CopyInput from "components/util/CopyInput";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Invite = () => {
     const { user } = useAuth();
@@ -13,6 +14,7 @@ const Invite = () => {
     const onChange = e => setEmail(e.target.value);
     const onSubmit = e => {
         e.preventDefault();
+        if(!email.trim().length) return toast.error('Please type email address.');
         UserAPI.invite(email)
         .then(() => toast.success('Invite sent successfully.'))
         .catch(err => toast.error(err.message));
@@ -22,18 +24,25 @@ const Invite = () => {
         <>
             <Nav />
             <div className="w-full bg-white">
+                {
+                    !user.username && <div className="px-3 pt-5 max-w-[900px] mx-auto">
+                        <div className="px-5 py-3 bg-red-200 border border-red-300 rounded-md">
+                            Please complete your <Link to={URL.PROFILE} className="text-blue-500 underline" >profile</Link> to invite friends.
+                        </div>
+                    </div>
+                }
                 <div className="px-3 pt-10 pb-2 max-w-[900px] mx-auto">
                     <div className="px-5 py-3 border rounded-md shadow-md">
                         <div className="text-lg font-bold">Share your link</div>
                         <div className="text-sm text-gray-500">Copy your personal referral link an share it with your friends and followers.</div>
-                        <CopyInput value={APP_URL + URL.GET_INVITE.replace(':uid', user.username)} className="mt-3 text-sm" />
+                        <CopyInput value={user.username ? APP_URL + URL.GET_INVITE.replace(':uid', user.username) : ''} className="mt-3 text-sm" />
                     </div>
                 </div>
                 <div className="px-3 pt-10 pb-3 max-w-[900px] mx-auto">
                     <div className="text-lg font-bold">Refer by email</div>
                     <div className="pb-4 text-sm text-gray-500">Enter your contact manually and we'll invite him for you.</div>
                     <form onSubmit={onSubmit} className="flex items-center justify-between gap-3">
-                        <input type="email" value={email} onChange={onChange} className="flex-1 px-3 py-2 text-sm border outline-none rounded-[4px]" placeholder="Type email address here" />
+                        <input type="email" value={email} onChange={onChange} className="flex-1 px-3 py-2 text-sm border outline-none rounded-[4px]" placeholder="Type email address here" disabled={!user.username} />
                         <button className="border border-teal-700 px-4 py-1 rounded-[4px] text-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">Send invites</button>
                     </form>
                 </div>
